@@ -1,74 +1,91 @@
-# folder-organizer
+# Folder Organizer
 
-`folder-organizer` is a public, privacy-safe skill package for organizing local folders on macOS or Ubuntu.
+Portable folder organization workflow for:
 
-It ships a Codex App skill, a Claude CLI excerpt, and a platform-neutral duplicate-audit script. The package focuses on safe incremental cleanup, reuse of the user's existing structure, and hash-verified duplicate handling.
+- `Codex App`
+- `Claude CLI`
 
-## What ships
+This repository ships one installable `Codex App` skill, one copyable
+`Claude CLI` excerpt, and one bundled duplicate-audit script. The public scope
+stays narrow: safe incremental cleanup, reuse of the user's current structure,
+hash-verified exact-duplicate handling, and system Trash safeguards on macOS
+and Ubuntu.
 
-- `codex-app-folder-organizer/`
-  - installable Codex App skill
-- `claude-code-cli/CLAUDE.folder-organizer.md`
-  - copyable Claude CLI excerpt
+## What Ships
 
-## Codex App
+- installable skill:
+  [`folder-org`](./folder-org)
+- copyable CLI file:
+  [`claude-code-cli/CLAUDE.folder-org.md`](./claude-code-cli/CLAUDE.folder-org.md)
+- bundled references for documents roots, downloads triage, and project-root
+  cleanup
+- a public duplicate-audit script:
+  [`folder-org/scripts/hash_duplicates.py`](./folder-org/scripts/hash_duplicates.py)
 
-Install the skill from this repository and use the `codex-app-folder-organizer` package path.
+## Install / Use
 
-The skill behavior is:
-- safe mode by default
-- incremental organization rather than full redesign
-- reuse of existing buckets before creating new ones
+- `Codex App`: install the skill from this repo path `folder-org`
+- GitHub install target:
+  - repo: `<owner>/folder-organizer`
+  - path: `folder-org`
+- `Claude CLI`: copy or merge
+  `claude-code-cli/CLAUDE.folder-org.md` into your local `CLAUDE.md`
+
+## Coverage
+
+- safe-mode folder cleanup
+- reuse of the user's existing buckets before creating new ones
 - exact-duplicate removal only after hash verification
 - system Trash safeguards on macOS and Ubuntu
+- sample maps for `Documents`, `Downloads`, and project roots
 
-## Claude CLI
+## Trigger Examples
 
-Copy the contents of:
+- `Use folder-org to clean up this Downloads folder safely.`
+- `Organize this Documents subtree without redesigning the whole structure.`
+- `Find exact duplicates here and only move low-risk ones to Trash.`
 
-`claude-code-cli/CLAUDE.folder-organizer.md`
+## Non-Trigger Examples
 
-into your Claude CLI instruction surface.
+- `Rename every folder to a brand new taxonomy.`
+- `Refactor the code inside this Git repository.`
+- `Delete duplicates permanently without a Trash safeguard.`
 
-## Privacy boundary
+## Privacy Boundary
 
-This public package does not ship:
-- personal names
-- school or course names
-- private repository names
-- absolute personal paths
-- private memory or workflow files
-- user-specific folder maps from the original private setup
+This public repository keeps the workflow generic and reusable.
 
-The sample maps in this repository are examples only. They are not extracted from any private personal folder tree.
+- It excludes personal names, school names, course names, and private project
+  labels.
+- It publishes no personal absolute paths, private memory files, or private
+  companion workflows.
+- It keeps the sample maps generic rather than extracted from one private
+  folder tree.
 
-## Repository layout
+## Repository Layout
 
-- `README.md`
-- `README.zh-CN.md`
-- `LICENSE`
-- `CHANGELOG.md`
-- `codex-app-folder-organizer/`
-- `claude-code-cli/`
+- `folder-org/`: installable `Codex App` skill
+- `folder-org/references/`: bundled public references
+- `folder-org/scripts/`: bundled duplicate-audit script
+- `claude-code-cli/`: minimal CLI excerpt for local `CLAUDE.md`
+- `CHANGELOG.md`: release history
+- `LICENSE`: `MIT`
 
-## Platform support
+## Platform Support
 
 This v1 package is written for:
+
 - macOS
 - Ubuntu
 
 Trash behavior:
+
 - macOS uses `~/.Trash`
 - Ubuntu uses `~/.local/share/Trash/files`
 
-If the Trash path cannot be confirmed, the workflow should stop the deletion step instead of permanently deleting files.
+If the Trash path cannot be confirmed, the workflow should stop the deletion
+step instead of permanently deleting files.
 
-## License
+Chinese:
 
-MIT
-
-## Chinese mirror
-
-See:
-
-`README.zh-CN.md`
+- [README.zh-CN.md](./README.zh-CN.md)

@@ -1,6 +1,7 @@
-# Folder organizer
+# Folder Org
 
-Use this workflow to organize local folders on macOS or Ubuntu with a privacy-safe and low-risk cleanup process.
+Use this workflow to organize local folders on macOS or Ubuntu with a
+privacy-safe and low-risk cleanup process.
 
 Behavior:
 - default to safe mode

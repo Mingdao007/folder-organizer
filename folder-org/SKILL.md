@@ -1,13 +1,19 @@
 ---
-name: folder-organizer
-description: Organize local folders on macOS or Ubuntu, classify files into an existing structure, and remove only low-risk exact duplicates with hash verification and system Trash safeguards.
+name: folder-org
+description: "Privacy-safe folder organization workflow for Codex App. Use when the user wants to clean up a local folder on macOS or Ubuntu, reuse the current structure, and remove only low-risk exact duplicates with hash verification and system Trash safeguards."
 ---
 
-# Folder organizer
+# Folder Org
 
 ## Scope
 
-Use this skill for local filesystem organization on macOS or Ubuntu.
+Implement a `Codex App` workflow for privacy-safe local folder organization on
+macOS or Ubuntu.
+
+This skill owns safe-mode cleanup, structure reuse, duplicate-audit gating,
+and Trash-safe deletion boundaries. Keep it focused on folder organization
+rather than code refactors, library-specific database maintenance, or full
+taxonomy redesign.
 
 Primary targets:
 - one folder root chosen by the user
@@ -22,6 +28,8 @@ Default behavior:
 - preserve working directories such as `assets/`, `scripts/`, `node_modules/`, `preview/`, export folders, and helper files
 - delete only exact duplicates verified by content hash
 - move removed files to the system Trash instead of permanently deleting them
+
+Keep the published workflow generic and reusable across users and projects.
 
 Route adjacent tasks:
 - application-level library organization belongs to the user's chosen library tool or document manager

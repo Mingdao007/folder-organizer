@@ -1,66 +1,82 @@
-# folder-organizer
+# Folder Organizer
 
-`folder-organizer` 是一个公开的、以隐私保护为前提的 skill package，用来在 macOS 或 Ubuntu 上整理本地文件夹。
+面向两个环境的可复用文件夹整理 workflow：
 
-它包含 Codex App skill、Claude CLI excerpt，以及一个平台无关的 duplicate audit script。这个仓库强调安全增量整理、优先复用现有目录结构，以及只在 hash 验证后处理 exact duplicates。
+- `Codex App`
+- `Claude CLI`
+
+这个仓库包含一个可安装的 `Codex App` skill、一份可复制的
+`Claude CLI` excerpt，以及一个平台无关的 duplicate-audit script。
+公开范围保持收敛：安全增量整理、优先复用现有目录结构、基于 hash
+的 exact-duplicate 处理，以及 macOS 与 Ubuntu 的 system Trash 保护。
 
 ## 包含内容
 
-- `codex-app-folder-organizer/`
-  - 可安装的 Codex App skill
-- `claude-code-cli/CLAUDE.folder-organizer.md`
-  - 可直接复制的 Claude CLI excerpt
+- 可安装 skill：
+  [`folder-org`](./folder-org)
+- 可复制 CLI 文件：
+  [`claude-code-cli/CLAUDE.folder-org.md`](./claude-code-cli/CLAUDE.folder-org.md)
+- 面向 `Documents`、`Downloads` 和 project root 的公开 references
+- 公开 duplicate-audit script：
+  [`folder-org/scripts/hash_duplicates.py`](./folder-org/scripts/hash_duplicates.py)
 
-## Codex App
+## 安装 / 使用
 
-从这个仓库安装 skill，并使用 `codex-app-folder-organizer` 这个 package path。
+- `Codex App`：从这个仓库安装 skill，repo path 使用 `folder-org`
+- GitHub 安装目标：
+  - repo: `<owner>/folder-organizer`
+  - path: `folder-org`
+- `Claude CLI`：把 `claude-code-cli/CLAUDE.folder-org.md` 复制或合并到本地
+  `CLAUDE.md`
 
-默认行为：
-- 默认 `safe mode`
-- 以增量整理为主，不做整体重构
-- 先复用已有 buckets，再创建新目录
-- 只有在 hash 验证后才处理 exact duplicates
-- 在 macOS 和 Ubuntu 上都使用 system Trash 保护删除动作
+## 覆盖范围
 
-## Claude CLI
+- `safe mode` 文件夹清理
+- 优先复用用户现有 buckets
+- 只在 hash 验证后处理 exact duplicates
+- macOS 与 Ubuntu 的 system Trash 保护
+- 面向 `Documents`、`Downloads` 和 project root 的 sample maps
 
-把下面文件的内容复制到 Claude CLI 的指令面：
+## 触发示例
 
-`claude-code-cli/CLAUDE.folder-organizer.md`
+- `Use folder-org to clean up this Downloads folder safely.`
+- `Organize this Documents subtree without redesigning the whole structure.`
+- `Find exact duplicates here and only move low-risk ones to Trash.`
+
+## 非触发示例
+
+- `Rename every folder to a brand new taxonomy.`
+- `Refactor the code inside this Git repository.`
+- `Delete duplicates permanently without a Trash safeguard.`
 
 ## 隐私边界
 
-这个公开包不包含：
-- 个人姓名
-- 学校或课程名称
-- 私有仓库名
-- 个人绝对路径
-- 私有 memory 或 workflow 文件
-- 来自私有环境的个人目录地图
+这个公开仓库保持 workflow 通用、可复用。
 
-仓库中的 sample maps 只是示例，不是从任何私有个人目录树直接抽出的内容。
+- 不包含个人姓名、学校名称、课程名称或私有项目标签。
+- 不发布个人绝对路径、私有 memory 文件或私有 companion workflow。
+- sample maps 保持通用，不直接抽取自任何私有个人目录树。
 
 ## 仓库结构
 
-- `README.md`
-- `README.zh-CN.md`
-- `LICENSE`
-- `CHANGELOG.md`
-- `codex-app-folder-organizer/`
-- `claude-code-cli/`
+- `folder-org/`：可安装的 `Codex App` skill
+- `folder-org/references/`：公开 references
+- `folder-org/scripts/`：duplicate-audit script
+- `claude-code-cli/`：本地 `CLAUDE.md` 用的最小 excerpt
+- `CHANGELOG.md`：发布历史
+- `LICENSE`：`MIT`
 
 ## 平台支持
 
 这个 v1 版本面向：
+
 - macOS
 - Ubuntu
 
 Trash 路径约定：
+
 - macOS 使用 `~/.Trash`
 - Ubuntu 使用 `~/.local/share/Trash/files`
 
-如果无法确认 Trash 路径，流程应当停止删除步骤，而不是做 permanent delete。
-
-## License
-
-MIT
+如果无法确认 Trash 路径，流程应当停止删除步骤，而不是做 permanent
+delete。
