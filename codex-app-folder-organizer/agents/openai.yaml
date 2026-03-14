@@ -1,0 +1,4 @@
+interface:
+  display_name: "Folder Organizer"
+  short_description: "Organize local folders on macOS or Ubuntu and dedupe safely"
+  default_prompt: "Use $folder-organizer in safe mode to organize a local folder on macOS or Ubuntu, classify files into the existing structure, and remove only low-risk exact duplicates with hash verification and system Trash safeguards."
